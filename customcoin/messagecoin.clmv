@@ -1,0 +1,31 @@
+;helpfully a version of a coin that contains a short message
+;firstly need to make a singleton / coin type
+
+
+; what to I want to achieve private message encoding in a decentralized way
+; send public key via coin to wallet of new contact which in turn triggers announcement that can send return public key.
+;public PGP key send --->
+;public PGP key receive <---
+;message coin send --->
+;message Coin receive <---
+
+
+; each contact can be assigned a keypair to remove contact destroy private key linked to their wallet address.
+; also thoughts on salting keys with other information.
+
+inputs
+Message
+Public key
+coin type identifier
+
+sends your public message key to recipient  wallet
+
+mod send_rca_public(
+
+)
+
+receives RCA from recipient wallet and creates coin containing recipient address and RCA public key
+
+mod receive_rca_public(
+
+)

@@ -1,0 +1,7 @@
+(mod (pubkey msg puzzle_hash amount)
+    (include 'condition_codes.clmv')
+
+    (list (list AGG_SIG_ME pubkey msg) (list CREATE_COIN puzzle_hash amount))
+
+
+)
