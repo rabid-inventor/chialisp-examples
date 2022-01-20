@@ -1,4 +1,4 @@
-;;condtion codes for future use this is usderstood by the blockchain and executes actions 
+;;condtion codes for future use this is usderstood by the blockchain and executes actions
 ;;Taken from https://www.chiarex.com/en/chialisp-documentation-486.html
 
 (
@@ -7,9 +7,7 @@
     (defconstant CREATE_COIN 51) ;usage (51 puzzlehash amount)
     (defconstant ASSERT_FEE 52)
     (defconstant CREATE_COIN_ANNOUNCEMENT 60) ;usage
-    (defconstant ASSERT_COIN_ANNOUNCEMENT 61) 
-    (defconstant ASSERT_FEE 62)
-    (defconstant ASSERT_FEE 63)
-    (defconstant ASSERT_FEE 64)
+    (defconstant ASSERT_COIN_ANNOUNCEMENT 61)
+  
 
 )

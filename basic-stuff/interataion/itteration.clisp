@@ -1,0 +1,10 @@
+
+(mod (index)
+   (defun iterate (index)
+       (if (= index 0)
+       (1)
+       (c (list 51 0xdeadbeef index) (iterate (- index 1)))
+        )
+    )
+(iterate index)
+)

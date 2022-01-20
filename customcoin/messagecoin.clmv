@@ -13,19 +13,39 @@
 ; each contact can be assigned a keypair to remove contact destroy private key linked to their wallet address.
 ; also thoughts on salting keys with other information.
 
-inputs
-Message
-Public key
-coin type identifier
+;inputs
+;Message
+;Public key
+;coin type identifier
 
 sends your public message key to recipient  wallet
 
-mod send_rca_public(
 
-)
 
 receives RCA from recipient wallet and creates coin containing recipient address and RCA public key
 
-mod receive_rca_public(
+
+
+(mod send_something ( MESSAGE_DESTINATION_PUZZLEHASH
+                      MESSAGE_CONTENT
+                      my_puzzlehash
+                      my_message)
+
+  (defconstant DEFAULT_AMOUNT 2)
+
+
+  (defun-inline recreate_self (my_puzzlehash)
+    (list
+      (list CREATE_COIN my_puzzlehash new_amount)
+      (list MESSAGE_CONTENT)
+    )
+
+  (defun-inline make_message_coin (my_puzzlehash my_message)
+
+    (list CREATE_COIN MESSAGE_DESTINATION_PUZZLEHASH )
+
+  )
+
+
 
 )

@@ -1,0 +1,53 @@
+helpful chia lisp stuff 
+
+complie with 
+cdv clsp build "filename"
+
+
+
+
+helpful notes 
+https://mojopuzzler.org/mediawiki/index.php/Iterate
+
+
+chia examples
+I made a simple game https://github.com/ytx1991/ChiaHeadsOrTails
+
+
+https://marketplace.visualstudio.com/items?itemName=Rigidity.chialisplanguage
+
+
+https://github.com/xch-gallery/singleton-utils/tree/main/puzzles
+
+
+If you are interested, I developed some singleton inner puzzle that can be owned by a user and transferred to another user, optionally by paying for it in XCH.
+
+The paid transfer can be initiated by both a seller or a buyer, by partially signing a spend bundle.
+The other party can then complete the signature and submit the transaction to the blockchain.
+
+The chialisp code can be found here, I'd love to get some feedback on it:
+https://github.com/xch-gallery/singleton-utils/tree/main/puzzles
+
+GitHub
+singleton-utils/puzzles at main · xch-gallery/singleton-utils
+Contribute to xch-gallery/singleton-utils development by creating an account on GitHub. 
+
+gneale
+7:32 PM
+greimela
+If you are interested, I developed some singleton inner puzzle that can be owned by a user and transferred to another user, optionally by paying for it in XCH. The paid transfer can be initiated by both a seller or a buyer, by partially signing a spend bundle. The other party can then complete the signature and submit the transaction to the blockchain. The chialisp code can be found here, I'd love to get some feedback on it: https://github.com/xch-gallery/singleton-utils/tree/main/puzzles
+Looks cool! Hey if you want cancel to always go back to the parent_coinID's puzzle_hash then have a look at this technique https://mojopuzzler.org/mediawiki/index.php/Cancel_mojo_technique. It might be helpful...
+greimela
+7:39 PM
+gneale
+Looks cool! Hey if you want cancel to always go back to the parent_coinID's puzzle_hash then have a look at this technique https://mojopuzzler.org/mediawiki/index.php/Cancel_mojo_technique. It might be helpful...
+
+
+neuances 
+thanks so much that really helped me debug thou it has taken a while clisp has some pretty strange nuances.
+this 
+defun iterate (index)
+This message failed to send. Cancel or Retry
+not this 
+defun iterate(index)
+* always have (space) before (

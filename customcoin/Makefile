@@ -3,7 +3,7 @@ LISPEXEC = brun
 SOURCEPATH = ./
 CURRENTFILE = messagecoin.clmv
 COMPFILE = test.lsp
-INCLUDEPATH = ''../includes/'
+INCLUDEPATH = ''../include/'
 SOLUTIONARGS = (100 200 300 400)
 
 all: $(CURRENTFILE)

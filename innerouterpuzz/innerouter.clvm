@@ -1,0 +1,49 @@
+(mod (
+    MOD_HASH        ;; curried in
+    PASSWORD_HASH   ;; curried in
+    INNER_PUZZLE    ;; curried in
+    inner_solution
+    password
+    new_password_hash
+  )
+
+  (include "condition_codes.clvm")
+  (include "sha256tree1.clvm")
+  (include "curry-and-treehash.clvm")
+
+  (defun pw-puzzle-hash (MOD_HASH mod_hash_hash new_password_hash_hash inner_puzzle_hash)
+     (puzzle-hash-of-curried-function
+       MOD_HASH
+       inner_puzzle_hash new_password_hash_hash mod_hash_hash ; parameters must be passed in reverse order
+     )
+   )
+
+  ;; tweak `CREATE_COIN` condition by wrapping the puzzle hash, forcing it to be a password locked coin
+  (defun-inline morph-condition (condition new_password_hash MOD_HASH)
+   (if (= (f condition) CREATE_COIN)
+     (list CREATE_COIN
+       (pw-puzzle-hash MOD_HASH (sha256tree1 MOD_HASH) (sha256tree1 new_password_hash) (f (r condition)))
+       (f (r (r condition)))
+     )
+     condition
+   )
+  )
+
+  ;; tweak all `CREATE_COIN` conditions, enforcing created coins to be locked by passwords
+  (defun morph-conditions (conditions new_password_hash MOD_HASH)
+   (if conditions
+     (c
+       (morph-condition (f conditions) new_password_hash MOD_HASH)
+       (morph-conditions (r conditions) new_password_hash MOD_HASH)
+     )
+     ()
+   )
+  )
+
+  ; main
+  (if (= (sha256 password) PASSWORD_HASH)
+    (morph-conditions (a INNER_PUZZLE inner_solution) new_password_hash MOD_HASH)
+    (x "wrong password")
+  )
+
+)
