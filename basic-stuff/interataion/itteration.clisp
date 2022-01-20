@@ -1,10 +1,21 @@
 
-(mod (index)
+(mod (
+         
+        index
+    )
+    (include condition_codes.clib)
+    (defconstant CASH_OUT_PUZZLE_HASH 0xa51babd70c60a37ce111f47803aa46aa6a773061ae1ca8ee9081c72587df7daf)
+
    (defun iterate (index)
        (if (= index 0)
        (1)
-       (c (list 51 0xdeadbeef index) (iterate (- index 1)))
+            (list 
+                    (list 51 CASH_OUT_PUZZLE_HASH index) 
+                    ( iterate (- index 1))
+            )
         )
     )
+
+;Main entery     
 (iterate index)
 )
